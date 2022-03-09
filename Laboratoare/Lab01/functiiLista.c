@@ -32,14 +32,3 @@ void DistrugeL(TLista* aL)
     free(aux);
   }
 }
-
-void f1(TLista x, int div) {
-  int i = 1;
-
-  for ( ;x != NULL && x->urm != NULL; x = x->urm->urm) {
-    if (x->info % div == 0 && x->urm->info == 0) {
-      printf("Indicii: %d, %d; Numerele %d, %d\n", i, i+1, x->info, x->urm->info);
-    }
-    i += 2;
-  }
-}

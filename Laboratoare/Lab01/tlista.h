@@ -22,5 +22,5 @@ void   DistrugeL (TLista*);       /* elimina toate celulele din lista */
 
 void AfisareL (TLista L);
 
-void f1 (TLista x, int div);
+//void f1 (TLista x, int div);
 #endif
