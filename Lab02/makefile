@@ -1,4 +1,4 @@
 build:
-	gcc -o lista functiiLista.c testLista.c
+	gcc -g functiiLista.c testLista.c
 run:
-	./lista
+	./a.out

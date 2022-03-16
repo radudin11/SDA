@@ -120,3 +120,102 @@ int f3(TLista x, int *inc, int *sf) {
   }
   return *sf - *inc + 1;
 }
+
+TLista Copie(TLista  L, int a, int b, int *len) {
+  TLista copy_L = NULL;
+  TLista sf = copy_L;
+  *len = 0;
+  for (TLista p = L; p != NULL; p = p->urm ) {
+    if (p->info < a || p->info > b) {
+      if(copy_L == NULL) {
+        copy_L = AlocCelula(p->info);
+        sf = copy_L;
+        *len++;
+      } else {
+        sf->urm = AlocCelula(p->info);
+        sf = sf->urm;
+        *len++;
+      }
+    }
+  }
+  return copy_L;
+}
+
+TLista Muta(TLista L, int k) {
+  TLista muta_L = NULL;
+  TLista sf = NULL, ant = NULL;
+  int poz = 0;
+  for (TLista cur = L; cur != NULL;) {
+    if (poz % k == 0 && poz != 0) {
+      if(muta_L == NULL) {
+        // "creez lista noua" si sterg din cea principala
+        muta_L = cur;
+        ant->urm = cur->urm;
+        cur = ant->urm;
+        muta_L->urm = NULL;
+        sf = muta_L;
+      } else {
+        // pun la finalul listei noi si sterg din cea principala
+        sf->urm = cur;
+        ant->urm = cur->urm;
+        cur = ant->urm;
+        sf->urm->urm = NULL;
+        sf = sf->urm;
+      }
+    } else {
+      ant = cur;
+      cur = cur->urm;
+    }
+    poz++;
+  }
+  return muta_L;
+}
+
+TLista Muta_bonus(TLista *L, int k) {
+  TLista muta_L = NULL;
+  TLista sf = NULL, ant = NULL;
+  int poz = 0;
+  for (TLista cur = *L; cur != NULL;) {
+    if (poz % 2 == k) {
+      if(ant == NULL) {
+        // daca pozitia este 0 in cazul nostru
+        *L = (*L)->urm;
+        if (muta_L == NULL) {
+          // "creez lista"
+          muta_L = cur;
+          muta_L->urm = NULL;
+          sf = muta_L;
+        } else {
+          // pun la final
+          sf->urm = cur;
+          sf->urm->urm = NULL;
+          sf = sf->urm;
+        }
+        // resetez elementul curent la inceputul listei
+        cur = *L;
+      } else {
+        // muta normal
+        if(muta_L == NULL) {
+          // "creez lista noua" si sterg din cea principala
+          muta_L = cur;
+          ant->urm = cur->urm;
+          cur = ant->urm;
+          muta_L->urm = NULL;
+          sf = muta_L;
+        } else {
+          // pun la finalul listei noi si sterg din cea principala
+          sf->urm = cur;
+          ant->urm = cur->urm;
+          cur = ant->urm;
+          sf->urm->urm = NULL;
+          sf = sf->urm;
+        }
+      }
+    } else {
+      ant = cur;
+      cur = cur->urm;
+    }
+    poz++;
+  }
+  return muta_L;
+}

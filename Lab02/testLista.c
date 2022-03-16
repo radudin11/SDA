@@ -14,7 +14,7 @@ int main ()
     printf("\nIntroduceti valori elemente terminate cu valoare nenumerica:\n");
     x = CitireL(&lx);
     AfisareL(x);
-    if(!x) continue;
+   if(!x) continue;
 
     /* apeluri functii implementate */
     printf("Introduceti numarul functiei de testat:\n");
@@ -55,10 +55,32 @@ int main ()
       printf("Indicii sunt %d %d\n", inc, sf);
     }
 
+    if(choice == '4') {
+      int len;
+      TLista copie = Copie(x, 3, 8, &len);
+      AfisareL(copie);
+      DistrugeL(&copie);
+    }
+    if(choice == '5') {
+      TLista muta = Muta(x, 0);
+      AfisareL(muta);
+      DistrugeL(&muta);
+    }
+
+    if(choice == '6') {
+      TLista muta = Muta_bonus(&x, 1);
+      AfisareL(muta);
+      AfisareL(x);
+      DistrugeL(&muta);
+    }
     DistrugeL(&x);
     printf ("\n  Inca un test ? [d/n]");
-    //if (getchar() == 'n') break;
     char exit = getchar();
-    if (exit == 'n') break;
-  }
+    while (exit == '\n') {
+      exit = getchar();
+    }
+    
+    if (exit != 'd') break;
+  }    
 }
+
