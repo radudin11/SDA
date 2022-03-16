@@ -15,12 +15,18 @@ TLista CitireL(int *lg)     /* construieste lista cu elemente citite */
       L = aux;
     } else {
       //lista ordonata crescator
-      u = L;
-      while (u->urm != NULL && u->urm->info < aux->info)
+      
+      if(aux->info < L->info) {
+        aux->urm = L;
+        L = aux;
+      } else {
+        u = L;
+        while (u->urm != NULL && u->urm->info <= aux->info)
         u = u->urm;
 
         aux->urm = u->urm;
         u->urm = aux;
+      }
     }
     
     (*lg)++;
