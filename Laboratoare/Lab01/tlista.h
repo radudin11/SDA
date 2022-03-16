@@ -21,10 +21,6 @@ TLista AlocCelula(int);          /* adresa celulei create sau NULL */
 void   DistrugeL (TLista*);       /* elimina toate celulele din lista */
 
 void AfisareL (TLista L);
-TLista CitireL(int *lg);
-void f1(TLista x, int div);
-int compare(TLista A, TLista B);
-int f3(TLista x, int *inc, int *sf); 
 
 //void f1 (TLista x, int div);
 #endif

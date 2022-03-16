@@ -57,6 +57,8 @@ int main ()
 
     DistrugeL(&x);
     printf ("\n  Inca un test ? [d/n]");
-    if (getchar() == 'n') break;
+    //if (getchar() == 'n') break;
+    char exit = getchar();
+    if (exit == 'n') break;
   }
 }
