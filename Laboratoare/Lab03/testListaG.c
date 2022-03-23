@@ -5,45 +5,26 @@
 
 #define MAX 5  /* număr maxim de elemente din lista */
 
-TLG CitireL_Int()     /* construieste lista cu elemente întregi - MAX elemente */
-{ TLG L = NULL, u, aux;
-  int *elem, nr = 0;
 
-  printf("\nConstructie lista generică cu %i elemente întregi\n", MAX);
-  for(nr = 0; nr < MAX; nr++)
-  {
-    int* elem = (int*)malloc(sizeof(int));
-    if(!elem) return L;
 
-    scanf("%i", elem);
-
-    aux = Aloc_CelulaG(elem);           /* incearca inserarea valorii citite */
-    if(!aux) {	/* alocare esuata => sfarsit citire */
-	free(elem); 
-	return L;
-    }       
-       
-    if(L == NULL) L = aux;
-    else u->urm = aux;
-    u = aux;
-  }
-  
-  return L;                     /* intoarce lista rezultat */
-}
-
-void afi_int(void* el)
-{
-	printf("%i ", *(int*)el);
+int f1(TLG L, int (*fcmp)(void*)) {
+  int app = 0;
+  for(;L != NULL; L=L->urm)
+    if(fcmp(L->info)) app++;
+  return app;
 }
 
 int main ()
 { 
   TLG L = NULL;     
   
-  L = CitireL_Int();  /* construiește lista generica cu elemente întregi */
-  AfisareLG(L, afi_int);
+  L = CitireL_Carte();  /* construiește lista generica cu elemente întregi */
+  AfisareLG(L, afi_carte);
 
   /* apeluri functii implementate */
+  Elim(&L, verificaAn_Carte, free_Carte);
+  AfisareLG(L, afi_carte);
+  
 
-  DistrugeLG(&L, free);
+  DistrugeLG(&L, free_Carte);
 }
