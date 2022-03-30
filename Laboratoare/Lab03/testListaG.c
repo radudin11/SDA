@@ -11,7 +11,7 @@ int f1(TLG L, int (*fcmp)(void*)) {
   int app = 0;
   for(;L != NULL; L=L->urm)
     if(fcmp(L->info)) app++;
-  return app;
+  return app; 
 }
 
 int main ()
