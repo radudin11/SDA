@@ -1,3 +1,8 @@
+#include "thash.h"
+
+#ifndef CARTI
+#define CARTI
+
 typedef struct {
 	char titlu[50];
 	char autor[30];
@@ -10,3 +15,5 @@ void afisareCarte(void * element);
 TLG citesteListaCarti(char * numeFisier);
 int cmpCarte(void * e1, void * e2);
 TH * GenerareHash(TLG listaCarti);
+
+#endif

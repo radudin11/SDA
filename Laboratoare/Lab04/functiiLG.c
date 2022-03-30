@@ -14,6 +14,34 @@ int Ins_IncLG(TLG* aL, void* ae)
 	return 1;
 }
 
+int Ins_OrdLG(TLG* aL, void* ae, TFCmp fcmp)
+{
+	TLG aux = malloc(sizeof(TCelulaG));
+	if(!aux)
+	    return -1;
+
+	aux->info = ae;
+	if ((*aL) == NULL) {
+		(*aL) = aux;
+    	return 0;
+	}
+
+    if(fcmp(aux->info, (*aL)->info) < 0) {
+        aux->urm = (*aL);
+        (*aL) = aux;
+		
+    } else {
+    	TLG u = (*aL);
+        while (u->urm != NULL && fcmp(u->urm->info, aux->info) <= 0)
+        	u = u->urm;
+
+        aux->urm = u->urm;
+        u->urm = aux;  
+    }
+
+	return 0;
+}
+
 void DistrugeLG(TLG* aL, TF free_elem) /* distruge lista */
 {
 	while(*aL != NULL)

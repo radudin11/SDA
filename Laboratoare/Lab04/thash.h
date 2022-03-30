@@ -24,6 +24,6 @@ typedef struct
 TH* InitTH(size_t M, TFHash fh);
 void DistrTH(TH**aa, TF fe);
 void AfiTH(TH*a, TF afiEl);
-int InsTH(TH*a, void*ae, TFCmp f);
+int InsTH(TH*a, void*ae, TFCmp f, TFCmp f2);
 
 #endif

@@ -20,6 +20,7 @@ typedef void (*TF)(void*);     /* functie afisare/eliberare un element */
 
 /* functii lista generica */
 int Ins_IncLG(TLG*, void*);  /*- inserare la inceput reusita sau nu (1/0) -*/
+int Ins_OrdLG(TLG* aL, void* ae, TFCmp fcmp);
 void DistrugeLG(TLG* aL, TF fe); /* distruge lista */
 /* afiseaza elementele din lista, folosind o functie de tip TFAfi */
 void Afisare(TLG*, TF);

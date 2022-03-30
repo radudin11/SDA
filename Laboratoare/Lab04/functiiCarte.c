@@ -84,10 +84,13 @@ TH * GenerareHash(TLG listaCarti)
 
         memcpy(carte, p->info, sizeof(TCarte));
 		rez = InsTH(h, carte, cmpCarte);
-        if(!rez) {
+        if(rez) {
 						free(carte);
 						return h;
 		}
+		printf("Persoana ");
+		afisarePers(h->v[codHash(p->info)]->info);
+
 	}
 
 	return h;
