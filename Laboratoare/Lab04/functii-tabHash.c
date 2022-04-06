@@ -60,15 +60,15 @@ void AfiTH(TH* ah,TF afi_elem)
 
 /* daca elementul exista functia intoarce 0
  *altfel se incearca inserarea elementului si se intoarce rezultatul inserarii */
-int InsTH(TH*a, void* ae, TFCmp fcmp)
+int InsTH(TH*a, void* ae, TFCmp fcmp, TFCmp fcmp2)
 {
     int cod = a->fh(ae), rez;
     TLG el;
 
     for(el = a->v[cod]; el != NULL; el = el->urm) {
-        if (fcmp(el->info, ae) == 1)
-            return 1;
+        if (fcmp(el->info, ae) == 0)
+            return 0;
     }
-    rez = Ins_IncLG(a->v+cod, ae); /* reminder: a->v+cod <=> &a->v[cod] */
+    rez = Ins_OrdLG(a->v+cod, ae, fcmp2); /* reminder: a->v+cod <=> &a->v[cod] */
     return rez;
 }

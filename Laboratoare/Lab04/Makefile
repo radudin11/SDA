@@ -1,5 +1,5 @@
 build: 
-	gcc -o thash functiiLG.c functii-tabHash.c testHash.c
+	gcc -o my_thash functiiLG.c functii-tabHash.c myHash.c functiiPers.c
 run:
 	./a.out
 clean:
