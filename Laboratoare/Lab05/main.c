@@ -4,6 +4,8 @@
 
 #include "TCoada.h"
 #include "TStiva.h"
+#include "my_func.h"
+
 
 /* numar maxim elemente coada / stiva */
 #define MAX 256 
@@ -60,6 +62,8 @@ int AfiPct(void *a)
 }
 
 
+
+
 int main()
 { 
 	void *c, *s;
@@ -69,22 +73,46 @@ int main()
 	if (!c) 
 		return 1;
 
-  	s = InitS(sizeof(TPunct),MAX);
+  	s = InitS(sizeof(int),MAX);
 	if (!s) 
 	{
 		DistrQ(&c); 
 		return 1;
 	}
 
-  	lgc = GenereazaCoadaPuncte(c, 8, -5, 5);
-  	lgs = GenereazaStivaPuncte(s, 6, 8, 14);
-  
+  	lgc = GenereazaCoadaINT(c, 8, -5, 5);
+  	lgs = GenereazaStivaINT(s, 6, -5, 5);
+	
+
+
 	printf("\nCoada cu %d elemente\n", lgc);
-  	AfisareQ(c, AfiPct);
+  	AfisareQ(c, AfiINT);
   	printf("\n\nStiva cu %d elemente\n", lgs);
-   	AfisareS(s, AfiPct);
+   	AfisareS(s, AfiINT);
 
  	/* apeluri functii */
+	printf("\n\n\nTASK1\n\n");
+
+	printf("nr de elem: %d\n", TASK1(s, 0));
+  	printf("\n\nStiva cu %d elemente\n", lgs);
+   	AfisareS(s, AfiINT);
+
+
+	printf("\n\n\nTASK2\n\n");
+	int nr;
+	printf("aici");
+	void* saux = TASK2(c, 2, &nr);
+	printf("\n\nStiva cu %d elemente\n", nr);
+   	AfisareS(saux, AfiINT);
+
+	printf("\n\n\nTASK3\n\n");
+	void* s_even = InitS(sizeof(int), MAX);
+	void* q_odd = InitQ(sizeof(int), MAX);
+	TASK3(s, s_even, q_odd);
+	printf("Coada de elemente impare:\n");
+	AfisareQ(q_odd, AfiINT);
+	printf("Stiva de elemente pare:\n");
+	AfisareS(s_even, AfiINT);
 
 	DistrS(&s);
   	DistrQ(&c);
