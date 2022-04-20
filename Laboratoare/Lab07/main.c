@@ -1,6 +1,6 @@
 /**-- test-ab.c --  prelucreaza arbori binari cu chei intregi --*/
 #include "tarb.h"
-
+#include "my_func.h"
 /*-- se completeaza cu definitiile functiilor implementate --*/
 
 void RSD(TArb a)
@@ -28,6 +28,16 @@ int main ()
 		RSD(arb);
 
 		/*-- se completeaza cu apelurile functiilor implementate --*/
+		printf("\n\nNr de noduri cu func 1: %d\n", Numara(arb));
+
+		int rezF2 = Parcurge(arb);
+		printf("\nNumarul de noduri neafisate: %d\n", rezF2);
+
+		int rezF3 = Verifica(arb, 1);
+		if(rezF3)
+			printf("F3 adevarat\n");
+		else
+			printf("F3 fals\n");
 
 		DistrArb (&arb);
 		printf ("\nInca un arbore ? [D/N] ");

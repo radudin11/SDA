@@ -1,6 +1,6 @@
 CC=gcc
 CFLAGS=-Wextra -g
-OBJ=main.o tarb.o auxarb.o
+OBJ=main.o tarb.o auxarb.o my_func.o
 TARGET=lab7
 
 build: $(TARGET)
